@@ -8,7 +8,7 @@
 	<body>
 		<h1>新增</h1>
 		<hr>
-		<form action="/OA/dept/add" method="post" charset="utf-8">
+		<form action="${pageContext.request.contextPath}/dept/add" method="post" charset="utf-8">
 			编号 <input type="text" name="Number"> <br>
 			部门 <input type="text" name="Name"> <br>
 			地址 <input type="text" name="Location"> <br>

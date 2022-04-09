@@ -1,9 +1,6 @@
 <%@ page import="com.example.OA_JSP.Dept" %>
 <%@page contentType="text/html;charset=UTF-8" %>
 
-<%
-	Dept dept=(Dept) request.getAttribute("deptlist");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -23,9 +20,9 @@
 		<body>
 			<h1>部门详情</h1>
 			<hr> 
-			部门编号：<%=dept.getNumber()%><br>
-			部门：<%=dept.getName()%><br>
-			部门位置：<%=dept.getLocation()%><br>
+			部门编号：${deptlist.Number}<br>		<%--这里应该是刚才转发收绑定的请求名--%>
+			部门：${deptlist.Name}<br>
+			部门位置：${deptlist.Location}<br>
 			<input type='button' value='后退' onclick='window.history.back()'>
 			
 		</body>

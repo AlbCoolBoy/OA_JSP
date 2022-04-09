@@ -1,6 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.OA_JSP.Dept" %>
 <%@page contentType="text/html;charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,7 @@
 
 <h1 align='center'>部门列表</h1>
 <%=session.getAttribute("Account")%>]
-<a href="<%=request.getContextPath()%>/user/exit">退出系统</a>
+<a href="${pageContext.request.contextPath}/user/exit">退出系统</a>
 <br>
 <table border='1px' align='center'>
     <tr>
@@ -22,31 +24,24 @@
         <th>操作</th>
     </tr>
 
-    <%--这里先试用这种方式进行数据的拼接--%>
-    <%
-        Object deptlist = request.getAttribute("deptlist");
-        List<Dept> list = (List) deptlist;
-        for (Dept l : list) {
-    %>
-    <tr>
-        <td><%=l.getNumber()%>
-        </td>
-        <td><%=l.getName()%>
-        </td>
-        <td><%=l.getLocation()%>
-        </td>
-        <td>
-            <a href="/OA/dept/delete?number=<%=l.getNumber()%>">删除</a>
-            <a href="/OA/dept/details?f=edit&number=<%=l.getNumber()%>">修改</a>
-            <a href="/OA/dept/details?f=detail&number=<%=l.getNumber()%>">详情</a>
-        </td>
-    </tr>
-    <%
-        }
-    %>
+    <c:forEach items="${deptlist}" var="dept">
+        <tr>
+            <td>${dept.number}
+            </td>
+            <td>${dept.name}
+            </td>
+            <td>${dept.location}
+            </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/dept/delete?number=${dept.number}">删除</a>
+                <a href="${pageContext.request.contextPath}/dept/details?f=edit&number=${dept.name}">修改</a>
+                <a href="${pageContext.request.contextPath}/dept/details?f=detail&number=${dept.location}">详情</a>
+            </td>
+        </tr>
+    </c:forEach>
 </table>
 
 
-<a href='/OA/add.jsp'>添加数据</a>
+<a href='${pageContext.request.contextPath}/add.jsp'>添加数据</a>
 </body>
 </html>

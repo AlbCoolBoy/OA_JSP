@@ -10,7 +10,7 @@
 		<h1>Login</h1>
 		<hr>
 		<%--<a href="/OA/dept/list">查看部门列表</a>--%>
-		<form action="<%=request.getContextPath()%>/user/login" method="post">
+		<form action="${pageContext.request.contextPath}/user/login" method="post">
 			Account<input type="text" name="account">
 			<br>
 			Password<input type="password" name="password">
